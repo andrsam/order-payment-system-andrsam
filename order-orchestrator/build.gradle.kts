@@ -1,3 +1,6 @@
+import org.gradle.kotlin.dsl.annotationProcessor
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     id("java")
     id("org.springframework.boot") version "3.5.7"
@@ -24,6 +27,8 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("org.liquibase:liquibase-core")
     runtimeOnly("org.postgresql:postgresql")
+    implementation("org.mapstruct:mapstruct:1.6.3")
+    annotationProcessor ("org.mapstruct:mapstruct-processor:1.6.3")
 
     //  tests
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -32,6 +37,7 @@ dependencies {
     //  lombok
     implementation("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
     testCompileOnly("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
 }

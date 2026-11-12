@@ -2,7 +2,7 @@ spring:
   application:
     name: order-orchestrator
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/orders}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/orders}
     username: ${SPRING_DATASOURCE_USERNAME:user}
     password: ${SPRING_DATASOURCE_PASSWORD:pass}
   liquibase:
@@ -17,6 +17,17 @@ spring:
       stop:
         command: down                     # полностью закрывает контейнеры
         arguments: -v
+  jpa:
+    show-sql: false
+
+app:
+  task-poller:
+    enabled: true
+    batch-size: 5
+    delay: 5s
+  task-processor:
+    threads-count: 10
+    max-attempts: 100
 
 # настройки Swagger
 springdoc:
